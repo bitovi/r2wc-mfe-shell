@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_PRIVATE_LOCAL_WEBPACK=true next dev",
     "build": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,7 +13,7 @@
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "webpack": "^5.89.0"
+    "webpack": "^5.90.3"
   },
   "devDependencies": {
     "@types/node": "^20",

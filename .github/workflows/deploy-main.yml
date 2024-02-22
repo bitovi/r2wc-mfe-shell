@@ -13,5 +13,5 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID_SANDBOX }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SANDBOX }}
           aws_default_region: us-east-1
-
-          aws_elb_app_port: 3001
+          aws_elb_app_port: 3000
+          env_ghv: ${{ vars.MAIN_ENV_VARS }}
