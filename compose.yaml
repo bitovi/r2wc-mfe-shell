@@ -1,0 +1,17 @@
+services:
+  shell:
+    build: .
+    ports:
+      - "3000:3000"
+  header:
+    build: ../header
+    ports:
+      - "3001:3001"
+  services:
+    build: ../services
+    ports:
+      - "3002:3002"
+  landing:
+    build: ../landing-page
+    ports:
+      - "80:80"
