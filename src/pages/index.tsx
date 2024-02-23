@@ -1,6 +1,7 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { lazy, Suspense } from "react";
+import { GetServerSideProps } from "next";
 
 // @ts-ignore
 const Header = lazy(() => import("header/scene"));
@@ -8,7 +9,7 @@ const Header = lazy(() => import("header/scene"));
 // @ts-ignore
 const Services = lazy(() => import("services/scene"));
 
-export default function Home() {
+export default function Home(props: any) {
   return (
     <>
       <Head>
@@ -20,12 +21,17 @@ export default function Home() {
         <Header />
       </Suspense>
       <Suspense>
-        <Services />
+        <Services {...props} />
       </Suspense>
     </>
   );
 }
 
-export const getServerSideProps = () => {
-  return { props: {} };
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  // @ts-ignore
+  const servicesProps = await import("services/scene").then(
+    ({ getServerData }) => getServerData(ctx)
+  );
+
+  return servicesProps;
 };
